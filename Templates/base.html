@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %} | Ed Rubio</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+
+
+<body>
+    <header>
+        <h4>Examen II</h4>
+
+        <nav>
+            <ul>
+                <li><a href="#">Actividades</a></li>
+                <li><a href="#">Actividades pendientes</a></li>
+                <li><a href="#">Actividades resueltas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <p>Contenido principal de la página. Este es el espacio para tu contenido específico.</p>
+        <p>Puedes sobrescribir este bloque en tus plantillas hijas.</p>
+        {% endblock content %}
+    </main>
+
+    <script src="{% static 'main.js' %}"></script>
+</body>
+
+</html>
