@@ -1,13 +1,16 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" />
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{% block title %}{% endblock title %} | Ed Rubio</title>
-    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+    <link rel='stylesheet' href='{% static "main.css" %} ' />
+    {% block stylesheet %}{% endblock stylesheet %}
 </head>
 
 
@@ -17,21 +20,16 @@
 
         <nav>
             <ul>
-                <li><a href="#">Actividades</a></li>
-                <li><a href="#">Actividades pendientes</a></li>
-                <li><a href="#">Actividades resueltas</a></li>
+                <li><a href='{% url "Solaire:ListActivities" %}'>Actividades</a></li>
+                <li><a href='{% url "Solaire:ListPending" %}'>Actividades pendientes</a></li>
+                <li><a href='{% url "Solaire:ListCompleted" %}'>Actividades resueltas</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        {% block content %}
-        <p>Contenido principal de la página. Este es el espacio para tu contenido específico.</p>
-        <p>Puedes sobrescribir este bloque en tus plantillas hijas.</p>
-        {% endblock content %}
+        {% block content %}{% endblock content %}
     </main>
-
-    <script src="{% static 'main.js' %}"></script>
 </body>
 
 </html>

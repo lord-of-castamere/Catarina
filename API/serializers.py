@@ -12,12 +12,11 @@ class ActivitiesSerializer(serializers.ModelSerializer):
         model = Activities
         fields = '__all__'
 
-# ---------------------------------------------------------------------------- #
-
-class UserSerializer(serializers.ModelSerializer):
+class ActivitiesListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = [ 'id', 'username', 'email', 'first_name', 'last_name' ]
+        model = Activities
+        fields = '__all__'
+        depth = 1
 
 # ---------------------------------------------------------------------------- #
 

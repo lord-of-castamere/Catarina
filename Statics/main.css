@@ -1,76 +1,284 @@
+
+/* -------------------------------------------------------------------------- */
+
+:root {
+    --color-info: #778DA9; 
+    --color-alert: #F4D35E;
+    --color-danger: #A22522;
+    --color-success: #86CB92;
+
+    --color-dark: #00120B;
+    --color-light: #E3E4DB;
+}
+
+/* -------------------------------------------------------------------------- */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(main) {
+  animation: slide-out 0.5s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+
+::view-transition-new(main) {
+  animation: slide-in 0.5s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(calc(50% * var(--direction)));
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(calc(-50% * var(--direction)));
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #1a1a1a;
-    color: #e0e0e0;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
+    user-select: none;
     min-height: 100vh;
+    margin: 0; padding: 0;
+    font-family: 'Helvetica', sans-serif;
+    background-color: var(--color-dark);
+    line-height: 1.5; color: var(--color-light);
 }
 
 header {
-    background-color: #2a2a2a;
+    position: sticky; top: 0;
+    z-index: 100;
     padding: 1rem 0;
-    border-bottom: 1px solid #3a3a3a;
     text-align: center;
+    backdrop-filter: blur(2rem);
 }
 
 header h4 {
     margin: 0;
-    color: #d1d0d0;
-    font-size: 1.4rem;
+    color: #897C80;
+    font-size: 1.8rem;
+    letter-spacing: .25rem;
+    padding: 1.5rem 0;
+    text-transform: uppercase;
 }
 
 nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
+    display: flex; list-style: none;
     justify-content: center;
-    gap: 20px;
-    padding-top: 10px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #cb3895;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: #ffc0d8;
+    padding: 0; margin: 0;
+    gap: 2rem;
 }
 
 main {
     flex-grow: 1;
-    padding: 20px;
-    max-width: 1420px;
-    margin: 20px auto;
-}
-
-footer {
-    background-color: #0d0d0d;
-    color: #b0b0b0;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: auto;
-}
-     
-h1, h2, h3, h5, h6 {
-    color: #f0f0f0;
-}
-
-p {
-    color: #e0e0e0;
+    padding: 1rem;
+    max-width: 80%;
+    margin: 1rem auto;
 }
 
 a {
-    color: #cb3895;
+    font-size: .9rem;
+    text-transform: uppercase;
+    color: #CAB6CD;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all .3s ease;
 }
 
 a:hover {
-    color: #ffc0d8;
+    text-underline-offset: .5rem;
+    text-decoration: underline;
+    color: #CFBCDF;
+}
+
+/* -------------------------------------------------------------------------- */
+
+.action-container {
+    display: flex; flex-direction: row; gap: .75rem;
+    align-items: center; color: var(--color-dark);
+    width: fit-content; padding: .75rem 1.5rem;
+    background-color: var(--color-success);
+    opacity: 90%;
+}
+
+.action-container:hover {
+    opacity: 100%;
+    text-decoration: none;
+    color: var(--color-dark);
+}
+
+.create-container {
+    background-color: var(--color-success);
+}
+
+.delete-container {
+    border: .025rem solid var(--color-danger);
+}
+
+.delete-container:hover {
+    background-color: var(--color-danger);
+}
+
+.update-container {
+    border: .025rem solid var(--color-info);
+}
+
+.update-container:hover {
+    background-color:  var(--color-info);
+}
+
+/* -------------------------------------------------------------------------- */
+
+.activities-table {
+    width: 100%;
+    margin-top: 1rem;
+    border-collapse: collapse;
+}
+
+.activities-table th, .activities-table td {
+    text-align: left; padding: 1.25rem 1rem;
+    border-bottom: .025rem solid var(--color-info);
+}
+
+.activities-table th {
+    background-color: var(--color-info);
+    text-transform: uppercase;
+    color: var(--color-light);
+    font-weight: bold;
+    font-size: .9rem;
+}
+
+/* -------------------------------------------------------------------------- */
+
+.button-table-element {
+    opacity: 90%;
+    font-size: .8rem;
+    color: var(--color-light);
+}
+
+.button-table-element:hover {
+    opacity: 100%;
+    text-decoration: none;
+    color: var(--color-light);
+}
+
+.table-element {
+    padding: .75rem 1.25rem;
+    font-size: .8rem;
+    margin-inline: .075rem;
+}
+
+.status-completed {
+    background-color: var(--color-success);
+    color: var(--color-dark);
+}
+
+.status-pending {
+    background-color: var(--color-alert);
+    color: var(--color-dark);
+}
+
+/* -------------------------------------------------------------------------- */
+
+.null-text {
+    font-style: italic;
+    font-size: xx-large;
+}
+
+/* -------------------------------------------------------------------------- */
+
+.table-buttons-main {
+    gap: .5rem;
+    display: flex;
+}
+
+/* -------------------------------------------------------------------------- */
+
+.main-delete {
+    padding: 2rem;
+    color: var(--color-light);
+}
+
+.lead-text {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--color-light);
+}
+
+.main-delete h4 {
+    font-size: 1rem;
+    margin-top: 2rem;
+    text-transform: uppercase;
+    color: var(--color-info);
+    padding-bottom: .75rem; margin-bottom: 1.5rem;
+    border-bottom: .0125rem solid var(--color-info);
+}
+
+.delete-list-group {
+    list-style: none; padding: 0;
+    margin-bottom: 1.75rem;
+}
+
+.delete-list-group li {
+    padding: .75rem 0;
+    font-size: 1rem;
+}
+
+.delete-list-group strong {
+    opacity: 80%;
+    text-transform: uppercase;
+    color: var(--color-success);
+    margin-right: .5rem;
+}
+
+.delete-form {
+    display: flex;
+    gap: 1.5rem; margin-top: 2.5rem;
+    justify-content: center;
+}
+
+.delete-form button, .delete-form a {
+    flex-grow: 1;
+    padding: 1rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.delete-form button {
+    background-color: var(--color-danger);
+    color: var(--color-light);
+    opacity: 80%;
+}
+
+.delete-form button:hover {
+    opacity: 100%;
+}
+
+.delete-form a {
+    border: .0125rem solid var(--color-info);
+    color: var(--color-light);
+}
+
+.delete-form a:hover {
+    background-color: var(--color-info);
 }
